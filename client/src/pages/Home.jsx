@@ -9,6 +9,7 @@ import Steps from '../componend/Steps';
 import Faqs from '../componend/Faqs';
 import Chatbot from '../componend/Chatbot';
 import Test from "../test/gridanimation";
+import About from '../componend/About';
 const Home = () => {
     return (
         <div className='' id="home">
@@ -33,6 +34,9 @@ const Home = () => {
             </div>
             <div>
                 <Chatbot />
+            </div>
+            <div>
+                <About />
             </div>
             <div className=''>
                 <Footer />
