@@ -8,25 +8,25 @@ const steps = [
     {
         id: 1,
         title: "Fill the form below !",
-        description: "Contact us to get to know about yourself, Help us Help you.",
-        imgSrc: step1 // Change this to your number images
+        description: "Tell us about yourself, Start by sharing a few details with us so we can understand what you're going through and how best to help",
+        imgSrc: step1
     },
     {
         id: 2,
-        title: "Fill the form below !",
-        description: "Contact us to get to know about yourself, Help us Help you.",
+        title: "Personal Review by Our Consultant",
+        description: "Your details are personally reviewed Our expert consultant will carefully go through your form to understand your needs and prepare for your session.",
         imgSrc: step2,
     },
     {
         id: 3,
-        title: "Fill the form below !",
-        description: "Contact us to get to know about yourself, Help us Help you.",
+        title: "Booking Session",
+        description: "Choose a time that works for you You’ll get a chance to select a session slot based on availability and your comfort.",
         imgSrc: step3,
     },
     {
         id: 4,
-        title: "Fill the form below !",
-        description: "Contact us to get to know about yourself, Help us Help you.",
+        title: "Begin Healing",
+        description: "Start your wellness journey Join your 1-on-1 session with our dedicated consultant who is here to support and guide you.",
         imgSrc: step4,
     },
 ];

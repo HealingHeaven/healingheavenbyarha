@@ -31,7 +31,15 @@ const OurServices = () => {
                     <h1 className="text-2xl font-bold text-gray-800">Free Consultation</h1>
                     <p className="text-gray-600 mt-2">Get a free initial consultation with our experts to discuss your mental health needs.</p>
                 </div>
-                <button className="mt-4 bg-[#fcdbdc] text-[#d76a6e] px-7 py-2 rounded-full border-2 border-[#d76a6e] hover:bg-[#d76a6e] hover:text-[#fcdbdc] hover:-translate-y-1 ease-in-out transition-transform ">Consult a coach for free</button>
+                <button
+                    onClick={() => {
+                        const el = document.getElementById("contact");
+                        if (el) el.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="mt-4 bg-[#fcdbdc] text-[#d76a6e] px-7 py-2 rounded-full border-2 border-[#d76a6e] hover:bg-[#d76a6e] hover:text-[#fcdbdc] hover:-translate-y-1 ease-in-out transition-transform"
+                >
+                    Consult a coach for free
+                </button>
             </div>
             <div className="max-w-6xl mx-auto text-center">
                 <h2 className="text-3xl font-bold text-gray-800 mb-8">Our Services</h2>
