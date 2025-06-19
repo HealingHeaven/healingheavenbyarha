@@ -23,7 +23,7 @@ const ContactForm = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:5000/api/contact", formData);
+      const response = await axios.post("https://healingheavenbyarha.onrender.com/api/contact", formData);
       toast.success(response.data.message || "Message sent!");
       setFormData({ email: "", name: "", phone: "", message: "" });
     } catch (error) {
