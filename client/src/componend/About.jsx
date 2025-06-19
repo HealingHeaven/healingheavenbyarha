@@ -4,7 +4,7 @@ import bgImage from '../assets/bgImage.jpg'; // 🖼️ make sure this image is 
 const About = () => {
     return (
         <section
-            className="relative bg-white text-gray-800 py-16 px-6 lg:px-32"
+            className="relative bg-white text-gray-800 py-16 px-6 lg:px-32" id='about'
         >
             {/* Background Image with Overlay */}
             <div

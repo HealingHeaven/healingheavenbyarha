@@ -51,7 +51,7 @@ const Navbar = () => {
                 <div className="hidden lg:flex space-x-6">
                     <button onClick={() => handleNavigateToSection("home")} className="text-black hover:text-blue-500">Home</button>
                     <button onClick={() => handleNavigateToSection("services")} className="text-black hover:text-blue-500">Services</button>
-                    <button onClick={() => window.location.href = "/about"} className="text-black hover:text-blue-500">About Us</button>
+                    <button onClick={() => handleNavigateToSection("about")} className="text-black hover:text-blue-500">About Us</button>
                     <button onClick={() => handleNavigateToSection("contact")} className="text-black hover:text-blue-500">Contact</button>
                 </div>
             </div>
@@ -61,7 +61,7 @@ const Navbar = () => {
                 <div className="flex flex-col space-y-4 p-4">
                     <button onClick={() => handleNavigateToSection("home")} className="text-black border-b-2 border-gray-600 text-left">Home</button>
                     <button onClick={() => handleNavigateToSection("services")} className="text-black border-b-2 border-gray-600 text-left">Services</button>
-                    <button onClick={() => window.location.href = "/about"} className="text-black border-b-2 border-gray-600 text-left">About Us</button>
+                    <button onClick={() => handleNavigateToSection("about")} className="text-black border-b-2 border-gray-600 text-left">About Us</button>
                     <button onClick={() => handleNavigateToSection("contact")} className="text-black border-b-2 border-gray-600 text-left">Contact</button>
                 </div>
             </div>
