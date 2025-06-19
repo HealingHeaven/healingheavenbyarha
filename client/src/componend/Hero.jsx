@@ -4,8 +4,8 @@ import wave from '../assets/wave.png';
 const HeroSection = () => {
 
   return (
-    <div className=" py-5 ">
-      <div className=" container h-auto mx-auto text-center border-2 py-5 lg:h-[85vh] overflow-hidden">
+    <div className=" pb-5 ">
+      <div className=" container h-auto mx-auto text-center border-2 pb-5 lg:h-[85vh] overflow-hidden">
         <section>
           <h1 className="font-rochester text-[3rem] tracking-widest">Your Mental Health Matters</h1>
         </section>
@@ -26,7 +26,10 @@ const HeroSection = () => {
             </div>
             <div className=' flex flex-col gap-5 items-center '>
               <h1 className=' text-sm md:text-2xl hidden md:block'><span className='font-bold'>Healing</span> takes time,<br /> asking for help is a<br /><span className='font-bold'>courageous</span> step</h1>
-              <button className=' w-32 text-sm tracking-wide bg-[#F7C1F8] border-2 border-gray-600 py-2 rounded-full'>Take a step</button>
+              <button onClick={() => {
+                const el = document.getElementById("contact");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }} className=' w-32 text-sm tracking-wide bg-[#F7C1F8] border-2 border-gray-600 py-2 rounded-full'>Take a step</button>
             </div>
           </div>
         </section>

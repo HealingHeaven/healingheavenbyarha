@@ -10,42 +10,58 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cors());
 
-// Nodemailer Transporter
+// Transporter (Gmail)
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
     },
+    tls: {
+        rejectUnauthorized: false,
+    },
 });
-console.log(process.env.EMAIL_USER + "email");
 
-// API Route for Contact Form
+// Verify connection config (optional but good practice)
+transporter.verify((error, success) => {
+    if (error) {
+        console.error("Error verifying transporter:", error);
+    } else {
+        console.log("Server is ready to send emails");
+    }
+});
+
+// POST /api/contact
 app.post("/api/contact", async (req, res) => {
     const { email, name, phone, message } = req.body;
-
-    console.log(email, name, phone, message)
-    if (!email || !name || !phone) {
+    if (!email) {
         return res.status(400).json({ message: "All fields are required" });
     }
 
     const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER, // Change to your email or recipient email
+        from: `"${name}" <${email}>`,
+        to: process.env.EMAIL_USER,
         subject: "New Contact Form Submission",
-        text: `You have received a new contact request.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
+        text: `
+You have received a new contact request:
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Message: ${message || "No message provided"}
+        `,
     };
 
     try {
         await transporter.sendMail(mailOptions);
-        res.json({ message: "Email sent successfully!" });
+        res.status(200).json({ message: "Contact Form Submitted" });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Error sending email" });
+        console.error("Error sending email:", error);
+        res.status(500).json({ message: "Error sending email", error });
     }
 });
 
-// Start Server
+// Start server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });

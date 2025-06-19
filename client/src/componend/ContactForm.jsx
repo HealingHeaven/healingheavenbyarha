@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import contactimg from "../assets/contact.png";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +13,6 @@ const ContactForm = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [responseMessage, setResponseMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,22 +21,21 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setResponseMessage("");
 
     try {
-      console.log(formData);
-      const response = await axios.post("http://localhost:5000/api/contact", formData);
-      setResponseMessage(response.data.message);
+      const response = await axios.post("https://healingheavenbyarha.onrender.com/api/contact", formData);
+      toast.success(response.data.message || "Message sent!");
       setFormData({ email: "", name: "", phone: "", message: "" });
     } catch (error) {
-      setResponseMessage("Error sending message. Please try again.");
+      toast.error("Failed to send message. Please try again.");
     }
 
     setLoading(false);
   };
 
   return (
-    <section className="max-w-5xl mx-auto px-6 py-12">
+    <section className="max-w-5xl mx-auto px-6 py-12" id="contact">
+      <ToastContainer position="top-right" autoClose={3000} />
       <h2 className="text-3xl md:text-4xl font-bold text-center">
         Tell Us How You Really Feel, <br />
         <span className="text-gray-700">For free...!</span>
@@ -97,16 +97,38 @@ const ContactForm = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-[#f178f3] text-white py-3 rounded-md font-semibold hover:bg-[#f467f6] transition"
+              className="w-full bg-[#f178f3] text-white py-3 rounded-md font-semibold hover:bg-[#f467f6] transition flex items-center justify-center"
               disabled={loading}
             >
-              {loading ? "Sending..." : "Submit"}
+              {loading ? (
+                <>
+                  <svg
+                    className="animate-spin h-5 w-5 mr-2 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    ></path>
+                  </svg>
+                  Sending...
+                </>
+              ) : (
+                "Submit"
+              )}
             </button>
           </form>
-
-          {responseMessage && (
-            <p className="text-center mt-4 text-gray-700">{responseMessage}</p>
-          )}
         </div>
 
         <div className="w-full md:w-1/2 flex justify-center">

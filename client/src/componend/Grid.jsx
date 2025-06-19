@@ -39,7 +39,7 @@ const Grid = () => {
                 <div className='item item-5 flex flex-col lg:flex-row rounded-none lg:rounded-xl overflow-hidden shadow-lg bg-[#FEDAFD]'>
                     <img src={addition} alt="depression" className=' lg:w-52' />
                     <div className='flex justify-start items-center flex-col p-5 gap-3'>
-                        <h1 className='text-3xl font-semibold'>Addition</h1>
+                        <h1 className='text-3xl font-semibold'>Addiction</h1>
                         <p className='text-sm text-center'>we take pride in the positive impact our online psychologist consultations impact our online have on our client’s lives. </p>
                     </div>
                 </div>

@@ -1,18 +1,33 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+
+    const handleNavigateToSection = (id) => {
+        if (location.pathname !== "/") {
+            window.location.href = `/#${id}`;
+        } else {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+        }
+        setIsOpen(false);
+    };
 
     return (
-        <nav className="bg-white p-4 lg:mx-20">
+        <nav className="bg-white p-4 lg:mx-20 z-50 relative">
             <div className="container mx-auto flex justify-between items-center relative">
                 {/* Logo */}
-                <Link to="/" className="text-gray-700 text-xl font-bold">
-                    Healing Heaven
-                </Link>
+                <button
+                    onClick={() => handleNavigateToSection("home")}
+                    className="w-20 h-20 overflow-hidden rounded-full"
+                >
+                    <img src={logo} alt="logo" width={300} />
+                </button>
 
-                {/* Hamburger Menu for Mobile */}
+                {/* Hamburger Menu */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className="text-black lg:hidden"
@@ -34,23 +49,20 @@ const Navbar = () => {
 
                 {/* Desktop Menu */}
                 <div className="hidden lg:flex space-x-6">
-                    <Link to="/" className="text-black hover:text-blue-500">Home</Link>
-                    <Link to="/services" className="text-black hover:text-blue-500">Services</Link>
-                    <Link to="/about" className="text-black hover:text-blue-500">About Us</Link>
-                    <Link to="/contact" className="text-black hover:text-blue-500">Contact</Link>
+                    <button onClick={() => handleNavigateToSection("home")} className="text-black hover:text-blue-500">Home</button>
+                    <button onClick={() => handleNavigateToSection("services")} className="text-black hover:text-blue-500">Services</button>
+                    <button onClick={() => window.location.href = "/about"} className="text-black hover:text-blue-500">About Us</button>
+                    <button onClick={() => handleNavigateToSection("contact")} className="text-black hover:text-blue-500">Contact</button>
                 </div>
             </div>
 
             {/* Mobile Dropdown */}
-            <div
-                className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-60" : "max-h-0"
-                    } lg:hidden`}
-            >
+            <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-60" : "max-h-0"} lg:hidden`}>
                 <div className="flex flex-col space-y-4 p-4">
-                    <Link to="/" className="text-black border-b-2 border-gray-600">Home</Link>
-                    <Link to="/services" className="text-black border-b-2 border-gray-600">Services</Link>
-                    <Link to="/about" className="text-black border-b-2 border-gray-600">About Us</Link>
-                    <Link to="/contact" className="text-black border-b-2 border-gray-600">Contact</Link>
+                    <button onClick={() => handleNavigateToSection("home")} className="text-black border-b-2 border-gray-600 text-left">Home</button>
+                    <button onClick={() => handleNavigateToSection("services")} className="text-black border-b-2 border-gray-600 text-left">Services</button>
+                    <button onClick={() => window.location.href = "/about"} className="text-black border-b-2 border-gray-600 text-left">About Us</button>
+                    <button onClick={() => handleNavigateToSection("contact")} className="text-black border-b-2 border-gray-600 text-left">Contact</button>
                 </div>
             </div>
         </nav>
