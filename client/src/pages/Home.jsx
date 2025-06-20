@@ -42,18 +42,19 @@ const Home = () => {
                 <Footer />
             </div>
             {/* WhatsApp Floating Button */}
-            <a
-                href="https://wa.me/9620778112"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="fixed bottom-5 right-5 z-50"
-            >
-                <img
-                    src="https://img.icons8.com/color/48/000000/whatsapp--v1.png"
-                    alt="WhatsApp"
-                    className="w-14 h-14 rounded-full shadow-lg hover:scale-110 transition-transform duration-300"
-                />
-            </a>
+<a
+    href="https://wa.me/919620778112"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="fixed bottom-5 right-5 z-50"
+>
+    <img
+        src="https://img.icons8.com/color/48/000000/whatsapp--v1.png"
+        alt="WhatsApp"
+        className="w-14 h-14 rounded-full shadow-lg hover:scale-110 transition-transform duration-300"
+    />
+</a>
+
         </div>
     )
 }
